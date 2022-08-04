@@ -34,13 +34,15 @@ namespace HR_App
                 string query = "SELECT * FROM employees";
                 string connectionData = File.ReadAllText("Env.txt");
                 Backend.Backend backend = new Backend.Backend(connectionData);
-                List<Backend.User> users = await backend.getUserFromDBAsync(query);
+                List<User> users = await backend.getUserFromDBAsync(query);
 
                 foreach(var user in users)
                 {
                     if(backend.CreateMD5(Password.Password) == user.password && Username.Text == user.userName)
                     {
-                        MessageBox.Show("Login successful");
+                        EmployeeList employeeList = new EmployeeList();
+                        employeeList.Show();
+                        this.Close();
                     }
                 }
             } catch(Exception ex)

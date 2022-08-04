@@ -1,0 +1,24 @@
+﻿<Window x:Class="HR_App.EmployeeList"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HR_App"
+        mc:Ignorable="d"
+        Title="HR-App" Height="450" Width="800">
+    <Grid>
+        <DataGrid Margin="0,10,0,192" x:Name="employeeListDataGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="ID" Binding="{Binding id, Mode=OneWay}" />
+                <DataGridTextColumn Header="First Name" Binding="{Binding firstName, Mode=OneWay}" />
+                <DataGridTextColumn Header="Last Name" Binding="{Binding lastName, Mode=OneWay}" />
+                <DataGridTextColumn Header="Age" Binding="{Binding age, Mode=OneWay}" />
+                <DataGridTextColumn Header="Employee Type" Binding="{Binding employeeType, Mode=OneWay}" />
+                <DataGridTextColumn Header="Employee Since" Binding="{Binding employeeSince, Mode=OneWay}" />
+                <DataGridTextColumn Header="Salary" Binding="{Binding salary, Mode=OneWay}" />
+                <DataGridTextColumn Header="Insurance" Binding="{Binding insurance, Mode=OneWay}" />
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>

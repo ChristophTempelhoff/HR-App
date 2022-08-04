@@ -40,7 +40,8 @@ namespace HR_App.Backend
                     string lastName;
                     int age;
                     string type;
-                    DateTime employeeSince;
+                    DateTime employeeSinceDT;
+                    string employeeSince;
                     double salary;
                     string insurance;
                     string username;
@@ -55,7 +56,8 @@ namespace HR_App.Backend
                         lastName = dataReader.GetString(2);
                         age = dataReader.GetInt32(3);
                         type = dataReader.GetString(4);
-                        employeeSince = dataReader.GetDateTime(5);
+                        employeeSinceDT = dataReader.GetDateTime(5);
+                        employeeSince = employeeSinceDT.Date.ToString();
                         salary = dataReader.GetDouble(6);
                         insurance = dataReader.GetString(7);
                         username = dataReader.GetString(8);
@@ -70,6 +72,59 @@ namespace HR_App.Backend
                     }
                     connection.Close();
                     return users;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Returns one or all employees contained in the table specified in the parameter "query". All that is done async.
+        /// </summary>
+        /// <param name="query">The SQL-query used to perform the request.</param>
+        /// <returns>Returns a List of all the empolyees fitting the SQL-querry</returns>
+        public async Task<List<Employee>> getEmployeeFromDBAsync(string query) 
+        {
+            try
+            {
+                using (MySqlConnection connection = new MySqlConnection(connectionData))
+                {
+                    connection.Open();
+                    MySqlDataReader dataReader = await MySqlHelper.ExecuteReaderAsync(connection, query);
+
+                    //store of the last user
+                    int id;
+                    string firstName;
+                    string lastName;
+                    int age;
+                    string type;
+                    DateTime employeeSinceDT;
+                    string employeeSince;
+                    double salary;
+                    string insurance;
+
+                    List<Employee> employees = new List<Employee>();
+
+                    while (dataReader.Read())
+                    {
+                        id = dataReader.GetInt32(0);
+                        firstName = dataReader.GetString(1);
+                        lastName = dataReader.GetString(2);
+                        age = dataReader.GetInt32(3);
+                        type = dataReader.GetString(4);
+                        employeeSinceDT = dataReader.GetDateTime(5);
+                        employeeSince = employeeSinceDT.Day + "." + employeeSinceDT.Month + "." + employeeSinceDT.Year;
+                        salary = dataReader.GetDouble(6);
+                        insurance = dataReader.GetString(7);
+
+                        employees.Add(new Employee { id = id, firstName = firstName, lastName = lastName, age = age, employeeType = type, employeeSince = employeeSince, salary = salary, insurance = insurance });
+                    }
+
+                    connection.Close();
+                    return employees;
                 }
             }
             catch (Exception e)

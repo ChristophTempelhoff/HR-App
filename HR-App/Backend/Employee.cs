@@ -14,7 +14,7 @@ namespace HR_App.Backend
         public string lastName { get; set; }
         public int age { get; set; }
         public string employeeType { get; set; }
-        public DateTime employeeSince { get; set; }
+        public string employeeSince { get; set; }
         public double salary { get; set; }
         public string insurance { get; set; }
     }
