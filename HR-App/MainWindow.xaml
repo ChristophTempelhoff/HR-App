@@ -5,8 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HR_App"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="HR-App" Height="250" Width="450" ResizeMode="CanMinimize">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="139*"/>
+            <RowDefinition Height="79*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="228"/>
+            <ColumnDefinition Width="238"/>
+        </Grid.ColumnDefinitions>
+        <Label Content="Username:" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Calibri" FontSize="16" Height="30" Width="108" HorizontalContentAlignment="Center"/>
+        <TextBox x:Name="Username" HorizontalAlignment="Center" Height="26" Margin="0,54,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="124" FontFamily="Calibri" FontSize="16" Grid.Column="1" />
+        <Label Content="Password:" HorizontalAlignment="Center" Margin="0,99,0,0" VerticalAlignment="Top" Width="88" FontFamily="Calibri" FontSize="16" Height="30"/>
+        <PasswordBox x:Name="Password" HorizontalAlignment="Center" Margin="0,99,0,0" VerticalAlignment="Top" Width="124" Height="26" FontSize="16" FontFamily="Calibri" Grid.Column="1"/>
+        <Button Content="Log in" HorizontalAlignment="Left" Margin="163,139,0,0" VerticalAlignment="Center" Width="140" Height="40" Click="Button_Click" Background="#FFE0E0E0" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
 
     </Grid>
 </Window>
