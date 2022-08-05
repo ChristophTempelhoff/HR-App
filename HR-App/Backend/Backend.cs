@@ -59,10 +59,18 @@ namespace HR_App.Backend
                         employeeSince = employeeSinceDT.Date.ToString();
                         salary = dataReader.GetDouble(6);
                         insurance = dataReader.GetString(7);
-                        username = dataReader.GetString(8);
-                        password = dataReader.GetString(9);
+                        if(!dataReader.IsDBNull(8) && !dataReader.IsDBNull(9))
+                        {
+                            username = dataReader.GetString(8);
+                            password = dataReader.GetString(9);
+                        }
+                        else
+                        {
+                            username = null;
+                            password = null;
+                        }
 
-                        if(username != "" || password != "")
+                        if(username != null || password != null)
                         {
                             users.Add(new User { id = id, firstName = firstName, lastName = lastName, age = age, employeeType = type, employeeSince = employeeSince, salary = salary, insurance = insurance, userName = username, password = password });
                             username = "";
@@ -124,6 +132,86 @@ namespace HR_App.Backend
 
                     connection.Close();
                     return employees;
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// This funtion is used to insert data into any database and is mostly sql-injection-proof
+        /// </summary>
+        /// <param name="employee">The employee you would like to add.</param>
+        public void insertPerson(Employee employee)
+        {
+            try
+            {
+                string query = "INSERT INTO employees VALUES(@id,@firstName,@lastName,@age,@employeeType,@employeeSince,@salary,@insurance,@username,@password)";
+                List<MySqlParameter> parameters = new List<MySqlParameter>();
+                parameters.Add(new MySqlParameter("@id", employee.id));
+                parameters.Add(new MySqlParameter("@firstName", employee.firstName));
+                parameters.Add(new MySqlParameter("@lastName", employee.lastName));
+                parameters.Add(new MySqlParameter("@age", employee.age));
+                parameters.Add(new MySqlParameter("@employeeType", employee.employeeType));
+                parameters.Add(new MySqlParameter("@employeeSince", employee.employeeSince));
+                parameters.Add(new MySqlParameter("@salary", employee.salary));
+                parameters.Add(new MySqlParameter("@insurance", employee.insurance));
+                parameters.Add(new MySqlParameter("@username", null));
+                parameters.Add(new MySqlParameter("@password", null));
+                using(MySqlConnection connection = new MySqlConnection(connectionData))
+                {
+                    MySqlCommand command = new MySqlCommand(query);
+                    command.Connection = connection;
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.Add(param);
+                    }
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// This funtion is used to insert data into any database and is mostly sql-injection-proof
+        /// </summary>
+        /// <param name="user">The user you would like to add.</param>
+        public void insertPerson(User user)
+        {
+            try
+            {
+                string query = "INSERT INTO employees VALUES(@id,@firstName,@lastName,@age,@employeeType,@employeeSince,@salary,@insurance,@username,@password)";
+                List<MySqlParameter> parameters = new List<MySqlParameter>();
+                parameters.Add(new MySqlParameter("@id", user.id));
+                parameters.Add(new MySqlParameter("@firstName", user.firstName));
+                parameters.Add(new MySqlParameter("@lastName", user.lastName));
+                parameters.Add(new MySqlParameter("@age", user.age));
+                parameters.Add(new MySqlParameter("@employeeType", user.employeeType));
+                parameters.Add(new MySqlParameter("@employeeSince", user.employeeSince));
+                parameters.Add(new MySqlParameter("@salary", user.salary));
+                parameters.Add(new MySqlParameter("@insurance", user.insurance));
+                parameters.Add(new MySqlParameter("@username", user.userName));
+                parameters.Add(new MySqlParameter("@password", user.password));
+                using (MySqlConnection connection = new MySqlConnection(connectionData))
+                {
+                    MySqlCommand command = new MySqlCommand(query);
+                    command.Connection = connection;
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.Add(param);
+                    }
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
                 }
             }
             catch (Exception e)

@@ -30,5 +30,15 @@ namespace HR_App
             }
         }
 
+        private void mnuAddEmployee(object sender, RoutedEventArgs e)
+        {
+            AddEmployee addEmployee = new AddEmployee();
+            addEmployee.Show();
+        }
+        public void mnuRefresh(object sender, RoutedEventArgs e)
+        {
+            employeeList.Items.Clear();
+            fillDataGrid();
+        }
     }
 }

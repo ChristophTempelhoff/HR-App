@@ -6,19 +6,41 @@
         xmlns:local="clr-namespace:HR_App"
         mc:Ignorable="d"
         Title="HR-App" Height="450" Width="800">
-    <Grid>
-        <DataGrid Margin="0,10,0,192" x:Name="employeeListDataGrid">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="ID" Binding="{Binding id, Mode=OneWay}" />
-                <DataGridTextColumn Header="First Name" Binding="{Binding firstName, Mode=OneWay}" />
-                <DataGridTextColumn Header="Last Name" Binding="{Binding lastName, Mode=OneWay}" />
-                <DataGridTextColumn Header="Age" Binding="{Binding age, Mode=OneWay}" />
-                <DataGridTextColumn Header="Employee Type" Binding="{Binding employeeType, Mode=OneWay}" />
-                <DataGridTextColumn Header="Employee Since" Binding="{Binding employeeSince, Mode=OneWay}" />
-                <DataGridTextColumn Header="Salary" Binding="{Binding salary, Mode=OneWay}" />
-                <DataGridTextColumn Header="Insurance" Binding="{Binding insurance, Mode=OneWay}" />
-            </DataGrid.Columns>
-        </DataGrid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="_Employees">
+                <MenuItem Header="Add new Employee" Click="mnuAddEmployee">
+                    <MenuItem.Icon>
+                        <Image Source="/Icons/employee.svg"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="Add new User">
+                    <MenuItem.Icon>
+                        <Image Source="/Icons/user.svg"/>
+                    </MenuItem.Icon>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="_Refresh" Click="mnuRefresh"></MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="151*"/>
+                <ColumnDefinition Width="49*"/>
+            </Grid.ColumnDefinitions>
+            <DataGrid Margin="10,10,10,192" x:Name="employeeListDataGrid">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="ID" Binding="{Binding id, Mode=OneWay}" />
+                    <DataGridTextColumn Header="First Name" Binding="{Binding firstName, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Last Name" Binding="{Binding lastName, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Age" Binding="{Binding age, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Employee Type" Binding="{Binding employeeType, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Employee Since" Binding="{Binding employeeSince, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Salary" Binding="{Binding salary, Mode=OneWay}" />
+                    <DataGridTextColumn Header="Insurance" Binding="{Binding insurance, Mode=OneWay}" />
+                </DataGrid.Columns>
+            </DataGrid>
 
-    </Grid>
+        </Grid>
+    </DockPanel>
+    
 </Window>
