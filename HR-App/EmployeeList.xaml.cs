@@ -29,7 +29,11 @@ namespace HR_App
                 employeeList.Items.Add(employee);
             }
         }
-
+        private void mnuAddUser(object sender, RoutedEventArgs e)
+        {
+            AddUser addUser = new AddUser();
+            addUser.Show();
+        }
         private void mnuAddEmployee(object sender, RoutedEventArgs e)
         {
             AddEmployee addEmployee = new AddEmployee();

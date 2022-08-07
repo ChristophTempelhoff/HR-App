@@ -14,7 +14,7 @@
                         <Image Source="/Icons/employee.svg"/>
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Add new User">
+                <MenuItem Header="Add new User" Click="mnuAddUser">
                     <MenuItem.Icon>
                         <Image Source="/Icons/user.svg"/>
                     </MenuItem.Icon>

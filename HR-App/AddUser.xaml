@@ -1,11 +1,11 @@
-﻿<Window x:Class="HR_App.AddEmployee"
+﻿<Window x:Class="HR_App.AddUser"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HR_App"
         mc:Ignorable="d"
-        Title="HR-App" Height="346" Width="281">
+        Title="HR-App" Height="419" Width="281" ResizeMode="CanMinimize">
     <Grid Margin="0,0,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -18,21 +18,19 @@
         <Label Content="Employee since: " HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" Grid.Column="0"/>
         <Label Content="Salary: " HorizontalAlignment="Center" Margin="0,192,0,0" VerticalAlignment="Top" Grid.Column="0"/>
         <Label Content="Insurance: " HorizontalAlignment="Center" Margin="0,224,0,0" VerticalAlignment="Top" Grid.Column="0"/>
+        <Label Content="Username: " HorizontalAlignment="Center" Margin="0,256,0,0" VerticalAlignment="Top" Grid.Column="0"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,32,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120" x:Name="firstName"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,64,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120" x:Name="lastName"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,96,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120" x:Name="age"/>
         <ComboBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,128,0,0" VerticalAlignment="Top" Width="120" x:Name="type">
-            <ComboBoxItem Tag="Accountent" Name="Accountent" Content="Accountent"></ComboBoxItem>
-            <ComboBoxItem Tag="Lead Programmer" Name="LeadProgrammer" Content="Lead Programmer"></ComboBoxItem>
-            <ComboBoxItem Tag="Programmer" Name="Programmer" Content="Programmer"></ComboBoxItem>
-            <ComboBoxItem Tag="Artist" Name="Artist" Content="Artist"></ComboBoxItem>
-            <ComboBoxItem Tag="Designer" Name="Designer" Content="Designer"></ComboBoxItem>
-            <ComboBoxItem Tag="QA" Name="QA" Content="QA"></ComboBoxItem>
+            <ComboBoxItem Tag="CEO" Name="CEO" Content="CEO"></ComboBoxItem>
+            <ComboBoxItem Tag="HR" Name="HR" Content="HR"></ComboBoxItem>
         </ComboBox>
         <DatePicker Grid.Column="1" HorizontalAlignment="Center" Margin="0,160,0,0" VerticalAlignment="Top" Width="120" x:Name="employeeSince"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,192,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120" x:Name="salary"/>
         <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,224,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120" x:Name="insurance"/>
-        <Button Content="Save" HorizontalAlignment="Right" Margin="0,264,55,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="44" Width="172" Grid.Column="0" Click="AddEmployeeFunc"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Center" Margin="0,256,0,0" TextWrapping="NoWrap" VerticalAlignment="Top" Width="120" x:Name="username"/>
+        <Button Content="Save" HorizontalAlignment="Right" Margin="0,323,55,0" VerticalAlignment="Top" Grid.ColumnSpan="2" Height="44" Width="172" Grid.Column="0" Click="AddUserFunc"/>
 
     </Grid>
 </Window>
