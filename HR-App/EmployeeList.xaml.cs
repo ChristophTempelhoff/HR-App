@@ -44,5 +44,23 @@ namespace HR_App
             employeeList.Items.Clear();
             fillDataGrid();
         }
+
+        private async void employeeListDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Backend.Employee employee = (Backend.Employee)employeeList.SelectedItem;
+            if(employee != null)
+            {
+                Backend.Backend backend = new Backend.Backend(File.ReadAllText("Env.txt"));
+                List<Backend.User> users = await backend.getUserFromDBAsync("SELECT * FROM employees WHERE id = " + employee.id);
+                Backend.User user = users[0];
+                EditPerson editPerson = new EditPerson(user);
+                editPerson.Show();
+            }
+        }
+
+        private void employeeListDataGrid_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            if (e.ClickCount == 2) employeeListDataGrid_MouseDoubleClick(sender, null); return;
+        }
     }
 }

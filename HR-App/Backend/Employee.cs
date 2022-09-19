@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace HR_App.Backend
 {
     //This Class is used to represent the user and any other employee
-    internal class Employee
+    public class Employee
     {
         public int id { get; set; }
         public string firstName { get; set; }

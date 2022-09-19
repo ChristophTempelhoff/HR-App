@@ -222,6 +222,46 @@ namespace HR_App.Backend
         }
 
         /// <summary>
+        /// This function is used to update a Person
+        /// </summary>
+        /// <param name="user">The employee/user you'd like to update.</param>
+        public void updatePerson(User user)
+        {
+            try
+            {
+                List<MySqlParameter> parameters = new List<MySqlParameter>();
+                parameters.Add(new MySqlParameter("@firstName", user.firstName));
+                parameters.Add(new MySqlParameter("@lastName", user.lastName));
+                parameters.Add(new MySqlParameter("@age", user.age));
+                parameters.Add(new MySqlParameter("@employeeType", user.employeeType));
+                parameters.Add(new MySqlParameter("@employeeSince", user.employeeSince));
+                parameters.Add(new MySqlParameter("@salary", user.salary));
+                parameters.Add(new MySqlParameter("@insurance", user.insurance));
+                parameters.Add(new MySqlParameter("@username", user.userName));
+                parameters.Add(new MySqlParameter("@password", user.password));
+                parameters.Add(new MySqlParameter("@id", user.id));
+                string query = "UPDATE employees SET firstName = @firstName, lastName = @lastName, age = @age, employeeType = @employeeType, employeeSince = @employeeSince, salary = @salary, insurance = @insurance, username = @username, password = @password WHERE id = @id";
+                using (MySqlConnection connection = new MySqlConnection(connectionData))
+                {
+                    MySqlCommand command = new MySqlCommand(query);
+                    command.Connection = connection;
+                    foreach (var param in parameters)
+                    {
+                        command.Parameters.Add(param);
+                    }
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.ToString());
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Returns a MD5 hash as a String.
         /// </summary>
         /// <param name="input">The string you would like to receive back as a MD5 hash</param>

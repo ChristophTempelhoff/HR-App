@@ -1,0 +1,56 @@
+﻿<Window x:Class="HR_App.EditPerson"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HR_App"
+        mc:Ignorable="d"
+        Title="EditPerson" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="First Name: "></Label>
+        <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Last Name: "></Label>
+        <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Age: "></Label>
+        <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Employee type: "></Label>
+        <Label Grid.Row="4" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Employee since: "></Label>
+        <Label Grid.Row="5" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Salary: "></Label>
+        <Label Grid.Row="6" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Insurance: "></Label>
+        <Label Grid.Row="7" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Username: "></Label>
+        <Label Grid.Row="8" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" Content="Password: "></Label>
+        <TextBox Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" x:Name="firstName"></TextBox>
+        <TextBox Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" x:Name="lastName"></TextBox>
+        <TextBox Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" x:Name="age"></TextBox>
+        <ComboBox Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" x:Name="type">
+            <ComboBoxItem Tag="CEO" Name="CEO" Content="CEO"></ComboBoxItem>
+            <ComboBoxItem Tag="HR" Name="HR" Content="HR"></ComboBoxItem>
+            <ComboBoxItem Tag="Accountent" Name="Accountent" Content="Accountent"></ComboBoxItem>
+            <ComboBoxItem Tag="Lead Programmer" Name="LeadProgrammer" Content="Lead Programmer"></ComboBoxItem>
+            <ComboBoxItem Tag="Programmer" Name="Programmer" Content="Programmer"></ComboBoxItem>
+            <ComboBoxItem Tag="Artist" Name="Artist" Content="Artist"></ComboBoxItem>
+            <ComboBoxItem Tag="Designer" Name="Designer" Content="Designer"></ComboBoxItem>
+            <ComboBoxItem Tag="QA" Name="QA" Content="QA"></ComboBoxItem>
+        </ComboBox>
+        <DatePicker Grid.Row="4" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" x:Name="since"></DatePicker>
+        <TextBox Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" x:Name="salary"></TextBox>
+        <TextBox Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" x:Name="insurance"></TextBox>
+        <TextBox Grid.Row="7" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" x:Name="username"></TextBox>
+        <PasswordBox Grid.Row="8" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" Width="120" x:Name="password"></PasswordBox>
+
+        <Button Grid.Row="9" HorizontalAlignment="Left" Content="Save" RenderTransformOrigin="0.494,0.518" Grid.ColumnSpan="2" Margin="305,0,0,0" Width="190" Click="SaveUser" />
+    </Grid>
+</Window>

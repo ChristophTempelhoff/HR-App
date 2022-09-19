@@ -27,7 +27,7 @@
                 <ColumnDefinition Width="151*"/>
                 <ColumnDefinition Width="49*"/>
             </Grid.ColumnDefinitions>
-            <DataGrid Margin="10,10,10,192" x:Name="employeeListDataGrid">
+            <DataGrid Margin="10,10,10,192" x:Name="employeeListDataGrid" SelectionChanged="employeeListDataGrid_SelectionChanged" MouseDoubleClick="employeeListDataGrid_MouseDoubleClick">
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="ID" Binding="{Binding id, Mode=OneWay}" />
                     <DataGridTextColumn Header="First Name" Binding="{Binding firstName, Mode=OneWay}" />

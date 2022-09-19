@@ -39,8 +39,9 @@ namespace HR_App
                 user.salary = double.Parse(salary.Text);
                 user.insurance = insurance.Text;
                 user.userName = username.Text;
-                user.password = backend.CreateMD5("1234TEST");
+                user.password = backend.CreateMD5("");
 
+                Console.WriteLine(user);
                 
                 backend.insertPerson(user);
                 MessageBox.Show("Success!");
