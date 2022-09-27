@@ -53,7 +53,7 @@ namespace HR_App
                 Backend.Backend backend = new Backend.Backend(File.ReadAllText("Env.txt"));
                 List<Backend.User> users = await backend.getUserFromDBAsync("SELECT * FROM employees WHERE id = " + employee.id);
                 Backend.User user = users[0];
-                EditPerson editPerson = new EditPerson(user);
+                EditPerson editPerson = new EditPerson(user, this);
                 editPerson.Show();
             }
         }

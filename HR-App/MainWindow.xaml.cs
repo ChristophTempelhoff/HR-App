@@ -32,8 +32,10 @@ namespace HR_App
                         EmployeeList employeeList = new EmployeeList();
                         employeeList.Show();
                         this.Close();
+                        return;
                     }
                 }
+                MessageBox.Show("Username or password wrong!");
             } catch(Exception ex)
             {
                 MessageBox.Show(ex.Message);

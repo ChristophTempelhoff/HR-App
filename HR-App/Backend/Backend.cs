@@ -262,6 +262,58 @@ namespace HR_App.Backend
         }
 
         /// <summary>
+        /// This function is used to delete an employee
+        /// </summary>
+        /// <param name="employee">The employee you would like deleted.</param>
+        public void deletePerson(Employee employee)
+        {
+            try
+            {
+                string query = "DELETE * FROM employees WHERE id = @id";
+                var param = new MySqlParameter("@id", employee.id);
+                using (MySqlConnection connection = new MySqlConnection(connectionData))
+                {
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.Add(param);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// This function is used to delete a user
+        /// </summary>
+        /// <param name="user">The user you would like deleted.</param>
+        public void deletePerson(User user)
+        {
+            try
+            {
+                string query = "DELETE FROM employees WHERE id = @id";
+                var param = new MySqlParameter("@id", user.id);
+                using (MySqlConnection connection = new MySqlConnection(connectionData))
+                {
+                    MySqlCommand command = new MySqlCommand(query, connection);
+                    command.Parameters.Add(param);
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                    connection.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(e.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
         /// Returns a MD5 hash as a String.
         /// </summary>
         /// <param name="input">The string you would like to receive back as a MD5 hash</param>
